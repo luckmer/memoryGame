@@ -1,7 +1,12 @@
+interface tempInterface {
+  id: number;
+  name: number;
+}
+
 const shuffle = (array: { id: number; name: number }[]) => {
   let counter = array.length,
-    temp,
-    index;
+    temp: tempInterface,
+    index: number;
 
   while (counter > 0) {
     index = Math.floor(Math.random() * counter);
