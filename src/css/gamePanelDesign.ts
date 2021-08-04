@@ -5,6 +5,12 @@ export const Main = styled.main`
   height: 100vh;
   display: flex;
   flex-direction: column;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 `;
 
 export const Container = styled.section`
@@ -51,7 +57,7 @@ export const Display = styled.div<{ Open: boolean }>`
   z-index: 1;
   height: 100%;
   width: 100%;
-  background-color: #d6aeb5;
+  background-color: #a6acac;
   transform: rotateY(
     ${({ Open }: { Open: boolean }) => (Open ? "0deg" : "180deg")}
   );
@@ -78,11 +84,62 @@ export const Back = styled.div<{ Open: boolean }>`
   height: 100%;
   width: 100%;
   backface-visibility: hidden;
-  background: #51dce0;
+  background: #3b4949;
   color: #d6aeb5;
+  box-shadow: 8px 8px 8px -4px #c8ccd4;
   transform: rotateY(
     ${({ Open }: { Open: boolean }) => (Open ? "180deg" : "0deg")}
   );
   font-size: 100px;
   transition: 0.3s ease all;
+`;
+
+export const GameOverContainer = styled.section`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+export const Spacer = styled.div`
+  padding: 20px;
+`;
+
+export const OverMoves = styled.div`
+  background-color: #a39f8c;
+
+  padding: 20px;
+  border-radius: 3px;
+  color: #ffff;
+`;
+
+export const OverButton = styled.button`
+  background-color: #a39f8c;
+  color: #ffff;
+  border: 0;
+  padding: 1vh 2vw 1vh 2vw;
+  border-radius: 3px;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    background-color: #a39f8f;
+  }
+`;
+
+export const Game = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+
+export const Header = styled.header`
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  color: #a39f8f;
+  width: 80%;
+  font-size: 30px;
+  text-align: left;
 `;
