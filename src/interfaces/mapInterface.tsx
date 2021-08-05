@@ -23,7 +23,6 @@ export interface MainGameInterface {
   click: clickInterface[];
   name: number;
   pair: pairInterface[];
-  checkPair: (item: pairInterface, name: number, open: boolean) => boolean;
   i: number;
   handleClick: (event: React.MouseEvent<HTMLElement>) => void;
 }

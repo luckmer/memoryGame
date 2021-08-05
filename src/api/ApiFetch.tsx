@@ -3,10 +3,8 @@ export class ApiFetch {
     const response = await fetch(url);
     const data = await response.json();
     const img = data.sprites.front_default;
-    return {
-      img: img,
-      id: ~~(i + 1),
-    };
+
+    return { img: img, id: ~~(i + 1) };
   };
 
   fetchPosts = async () => {

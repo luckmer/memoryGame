@@ -1,8 +1,9 @@
-import * as M from "../css/gamePanelDesign";
 import { MainGameInterface } from "../interfaces/mapInterface";
+import * as M from "../css/gamePanelDesign";
+import { checkPair } from "../hooks/index";
 
 const MainGamePanel = (props: MainGameInterface) => {
-  const { image, id, click, name, pair, checkPair, i, handleClick } = props;
+  const { image, id, click, name, pair, i, handleClick } = props;
   let open = false;
 
   const imgView = image.find((el: { id: number }) => el.id === id);

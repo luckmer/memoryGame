@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { shuffle } from "./index";
+import { shuffle, mapGenerator } from "./index";
 import { ApiFetch } from "../api/ApiFetch";
 import {
   mapInterface,
@@ -20,23 +20,16 @@ const SetUpdate = (
   useEffect(() => {
     const size: number = 16;
 
-    const generator = [...Array(size)].map((_, i: number) => {
-      const apiId = ~~(i / 2) + 1;
-
-      return {
-        id: apiId,
-        name: ~~(i + 2),
-      };
-    });
-
+    const generator = mapGenerator(size);
     const mapResult = shuffle(generator);
+
     setMap(mapResult);
   }, [setMap]);
 
   useEffect(() => {
-    const Api = new ApiFetch();
-
     try {
+      const Api = new ApiFetch();
+
       Api.fetchPosts().then((res) => setImage(res as imageInterface[]));
     } catch (err) {
       throw err;
@@ -45,19 +38,19 @@ const SetUpdate = (
 
   useEffect(() => {
     if (click.length < 2) return;
+
     const [one, two] = click;
 
-    if (one && two) {
-      if (one.id === two.id) {
-        const pair = { first: one.name, second: two.name };
+    if (one && two && one.id === two.id) {
+      const pair = { first: one.name, second: two.name };
 
-        setPair((prev) => [...prev, pair]);
-      }
+      setPair((prev) => [...prev, pair]);
     }
   }, [click, setPair]);
 
   useEffect(() => {
     if (click.length < 2) return;
+
     setTimeout(() => setClick([]), 500);
   }, [click, setClick]);
 
